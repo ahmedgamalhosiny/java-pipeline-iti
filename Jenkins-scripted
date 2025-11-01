@@ -3,6 +3,11 @@ node("agent-0"){
     def jdk = tool name: 'java-11', type: 'jdk'
     
     stage("Build"){
+        sh "java -version"
+        sh '''
+        env.PATH = "${maven}/bin:${env.PATH}"
+        '''
+        sh "java -version"
         sh "mvn package install"
     }
     stage("Test"){
