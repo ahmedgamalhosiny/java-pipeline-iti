@@ -1,0 +1,26 @@
+node {
+    stage('Checkout') {
+        echo 'Cloning repository...'
+        git branch: 'main', url: 'https://github.com/ahmedgamalhosiny/java-pipeline-iti.git'
+    }
+
+    stage('Build') {
+        echo 'Building the Java project...'
+        bat 'mvn clean package'
+    }
+
+    stage('Test') {
+        echo 'Running tests...'
+        bat 'mvn test'
+    }
+
+    stage('Deploy') {
+        echo 'Deploying application...'
+        // Just simulating deployment for now
+        echo 'Application deployed successfully!'
+    }
+
+    stage('Post Build') {
+        echo 'Build completed successfully!'
+    }
+}
